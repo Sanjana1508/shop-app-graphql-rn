@@ -1,0 +1,48 @@
+type Product {
+  id: Int!
+  ownerId: String!
+  title: String!
+  imageUrl: String!
+  description: String!
+  price: Float!
+  createdAt: String
+  updatedAt: String
+}
+
+type User {
+  username: String!
+  password: String!
+  createdAt: String!
+  token: String
+  expiry: Int
+}
+type Query {
+  getProducts(offset: Int, limit: Int): [Product!]!
+  getProduct(id: Int!): Product!
+  getUserProducts(ownerId: String!, offset: Int, limit: Int): [Product!]!
+  getUsers: [User!]!
+  login(username: String!, password: String!): User!
+}
+
+type Mutation {
+  createProduct(
+    ownerId: String!
+    title: String!
+    imageUrl: String!
+    description: String!
+    price: Float!
+  ): Product!
+
+  updateProduct(
+    id: Int!
+    ownerId: String
+    title: String
+    imageUrl: String
+    description: String
+    price: Float
+  ): Product
+
+  deleteProduct(id: Int!): Product
+
+  register(username: String!, password: String!): User!
+}
